@@ -1,8 +1,6 @@
-package com.example.crudfs;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import java.time.LocalDate;
+package com.example.crudfs.model;
+import jakarta.persistence.*;
+import com.example.crudfs.model.Ocupacion;
 
 @Entity
 @Table(name = "cliente")
@@ -17,14 +15,17 @@ public class Cliente {
     private String ciudad;
     private String correo_electronico;
     private String telefono;
-    private String ocupacion;
 
+    @ManyToOne
+    @JoinColumn(name = "ocupacion", referencedColumnName = "tipo")// Columna que referencia a Ocupacion    private Ocupacion ocupacion;
+    private Ocupacion ocupacion;
+    private String estado;
     // Constructor vacío (necesario para JPA)
     public Cliente() {
     }
 
     // Constructor con parámetros (opcional)
-        public Cliente(String numero_documento, String nombre, String apellidos, String fecha_nacimiento, String ciudad, String correo_electronico, String telefono, String ocupacion) {
+        public Cliente(String numero_documento, String nombre, String apellidos, String fecha_nacimiento, String ciudad, String correo_electronico, String telefono, Ocupacion ocupacion, String estado) {
         this.numero_documento = numero_documento;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -33,7 +34,9 @@ public class Cliente {
         this.correo_electronico = correo_electronico;
         this.telefono = telefono;
         this.ocupacion = ocupacion;
-    }
+            //private Ocupacion ocupacion;
+
+        }
 
     // Métodos getter y setter
     public String getNumeroDocumento() {
@@ -92,11 +95,19 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    public String getOcupacion() {
+    public Ocupacion getOcupacion() {
         return ocupacion;
     }
 
-    public void setOcupacion(String ocupacion) {
+    public void setOcupacion(Ocupacion ocupacion) {
         this.ocupacion = ocupacion;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }
