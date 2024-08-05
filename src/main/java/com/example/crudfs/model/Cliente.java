@@ -12,25 +12,32 @@ public class Cliente {
     private String nombre;
     private String apellidos;
     private String fecha_nacimiento;
-    private String ciudad;
+
+    @ManyToOne
+    @JoinColumn(name = "ciudad", referencedColumnName = "name")// Columna que referencia a Ocupacion    private Ocupacion ocupacion;
+    private Ciudad ciudad;
+
     private String correo_electronico;
     private String telefono;
 
     @ManyToOne
     @JoinColumn(name = "ocupacion", referencedColumnName = "tipo")// Columna que referencia a Ocupacion    private Ocupacion ocupacion;
     private Ocupacion ocupacion;
+
     private String estado;
     // Constructor vacío (necesario para JPA)
     public Cliente() {
     }
 
     // Constructor con parámetros (opcional)
-        public Cliente(String numero_documento, String nombre, String apellidos, String fecha_nacimiento, String ciudad, String correo_electronico, String telefono, Ocupacion ocupacion, String estado) {
+        public Cliente(String numero_documento, String nombre, String apellidos, String fecha_nacimiento, Ciudad ciudad, String correo_electronico, String telefono, Ocupacion ocupacion, String estado) {
         this.numero_documento = numero_documento;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.fecha_nacimiento = fecha_nacimiento;
-        this.ciudad = ciudad;
+
+
+
         this.correo_electronico = correo_electronico;
         this.telefono = telefono;
         this.ocupacion = ocupacion;
@@ -71,11 +78,11 @@ public class Cliente {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
-    public String getCiudad() {
+    public Ciudad getCiudad() {
         return ciudad;
     }
 
-    public void setCiudad(String ciudad) {
+    public void setCiudad(Ciudad ciudad) {
         this.ciudad = ciudad;
     }
 
