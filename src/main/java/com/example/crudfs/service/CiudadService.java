@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CiudadService {
@@ -21,11 +22,10 @@ public class CiudadService {
         return ciudadRepository.findAll();
     }
 
-    public Ciudad getCiudadById(String nombre) {
-        return ciudadRepository.findById(nombre).orElse(null);
+    public Optional<Ciudad> getCiudadById(Long id) {
+        return ciudadRepository.findById(id);
     }
-
-    public void deleteCiudad(String nombre) {
-        ciudadRepository.deleteById(nombre);
+    public void deleteCiudad(Long id) {
+        ciudadRepository.deleteById(id);
     }
 }

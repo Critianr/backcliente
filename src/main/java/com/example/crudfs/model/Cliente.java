@@ -14,7 +14,7 @@ public class Cliente {
     private String fecha_nacimiento;
 
     @ManyToOne
-    @JoinColumn(name = "ciudad", referencedColumnName = "name")// Columna que referencia a Ocupacion    private Ocupacion ocupacion;
+    @JoinColumn(name = "ciudad_id")
     private Ciudad ciudad;
 
     private String correo_electronico;

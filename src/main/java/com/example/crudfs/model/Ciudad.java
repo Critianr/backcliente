@@ -6,32 +6,41 @@ import jakarta.persistence.*;
 @Table(name = "ciudad")
 public class Ciudad {
 
-
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "name")  // Tipo actúa como la clave primaria
-    private String name;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String nombre;
 
     public Ciudad() {
     }
 
-    public Ciudad(String name) {
-        this.name = name;
+    public Ciudad(String nombre) {
+        this.nombre = nombre;
     }
 
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
+    // Getters y setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getNombre() {
-        return name;
+        return nombre;
     }
 
-    public void setNombre(String name) {
-        this.name = name;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Override
+    public String toString() {
+        return "Ciudad{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                '}';
     }
 }
