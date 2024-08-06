@@ -9,9 +9,9 @@ public class Ocupacion {
 
     @Id
     @Column(name = "tipo")  // Tipo actúa como la clave primaria
-    private String tipo; // ID como String
+    private String tipo;
 
-    //private String ocupacion; // Nombre de la ocupación
+
 
     // Constructor sin argumentos
     public Ocupacion() {}
